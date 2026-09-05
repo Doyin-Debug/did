@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if isAuthenticated() && (request.auth.uid == userId);
+    }
+
+    // Quiz Results / Score history
+    match /quiz_results/{resultId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+    }
+
+    // Custom Quizzes
+    match /custom_quizzes/{quizId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if true;
+    }
+
+    // Leaderboards / stats
+    match /leaderboards/{entryId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+    }
+  }
+}

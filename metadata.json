@@ -1,0 +1,6 @@
+{
+  "name": "QUIZ PRO",
+  "description": "QUIZ PRO - A clean, modern interactive quiz application featuring 17+ subjects, customizable difficulty levels, selectable question counts, multiple game modes, lifelines, custom quiz creation, Firebase Firestore real-time cloud sync, global leaderboards, and instant performance reviews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

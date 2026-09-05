@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with stats and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "totalScore": { "type": "number" },
+        "quizzesPlayed": { "type": "number" },
+        "accuracy": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "displayName"]
+    },
+    "QuizResult": {
+      "title": "Quiz Result",
+      "description": "Completed quiz attempt records",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "categoryTitle": { "type": "string" },
+        "score": { "type": "number" },
+        "accuracy": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "mode": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["userId", "score", "totalQuestions"]
+    },
+    "CustomQuiz": {
+      "title": "Custom Quiz",
+      "description": "User created community quiz decks",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "createdBy": { "type": "string" },
+        "questions": { "type": "array" },
+        "isPublic": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "createdBy", "questions"]
+    }
+  },
+  "collections": {
+    "users": {
+      "entity": "User",
+      "description": "Collection of user profiles"
+    },
+    "quiz_results": {
+      "entity": "QuizResult",
+      "description": "History of completed quizzes"
+    },
+    "custom_quizzes": {
+      "entity": "CustomQuiz",
+      "description": "User generated quiz decks"
+    }
+  }
+}
